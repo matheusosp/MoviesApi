@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moviesapi-deployment
+  labels:
+    app: moviesapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: moviesapi
+  template:
+    metadata:
+      labels:
+        app: moviesapi
+    spec:
+      containers:
+      - name: moviesapi
+        image: public.ecr.aws/k8y8g0w4/moviesapi:latest
+        ports:
+        - containerPort: 8080
